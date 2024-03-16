@@ -13,19 +13,19 @@ jumps = {
  		}
 
 registers = {
-			int("20", 16):"a",
- 			int("08", 16):"b", 
- 			int("04", 16):"c", 
- 			int("10", 16):"d", 
- 			int("01", 16):"s", 
- 			int("02", 16):"i", 
+			int("04", 16):"a",
+ 			int("40", 16):"b", 
+ 			int("08", 16):"c", 
+ 			int("02", 16):"d", 
+ 			int("20", 16):"s", 
+ 			int("10", 16):"i", 
  			int("90", 16):"f",
  			int("00", 16):"none",
 
  		}
 
 syscalls = {
-			int("04", 16):"read",
+			int("08", 16):"read",
  			int("10", 16):"write", 
  			int("02", 16):"exit",
  			int("20", 16):"open",
@@ -84,14 +84,14 @@ def jmp(arg1, arg2):
 	print(registers[arg2])
 
 opcodes = {
-			int("10", 16): mov,
- 			int("08", 16): add, 
- 			int("04", 16): stm, 
- 			int("20", 16): ldm, 
- 			int("80", 16): cmp, 
- 			int("40", 16): sys, 
- 			int("02", 16): stk,
- 			int("01", 16): jmp,
+			int("02", 16): mov,
+ 			int("04", 16): add, 
+ 			int("20", 16): stk,
+ 			int("08", 16): stm, 
+ 			int("40", 16): ldm, 
+ 			int("01", 16): cmp, 
+ 			int("10", 16): sys,
+ 			int("80", 16): jmp,
 		}
 
 
@@ -104,7 +104,7 @@ f.close()
 for i in range(len(vmcode)):
 	vmcode[i]=int(vmcode[i], 16)
 
-kolejnosc = [2, 1, 3]
+kolejnosc = [3, 1, 2]
 
 
 vmcode2 = [0 for i in range(len(vmcode))]
@@ -122,7 +122,7 @@ vmcode = vmcode2
 klucze = opcodes.keys()
 for i in range(0, len(vmcode), 3):
 	if vmcode[i] not in klucze:
-		print("UNKNOWN")
+		print("UNKNOWN " + hex(vmcode[i]))
 		continue
 	# print(hex(vmcode[i]))
 	opcodes[vmcode[i]](vmcode[i+1], vmcode[i+2])

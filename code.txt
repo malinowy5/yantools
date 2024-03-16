@@ -1,0 +1,13 @@
+MOV a 2f
+STK 0 a
+MOV a 66
+STK 0 a
+MOV a 6c
+STK 0 a
+MOV a 61
+STK 0 a
+MOV a 67
+STK 0 a
+MOV a 00
+STK 0 a
+SYS open d
