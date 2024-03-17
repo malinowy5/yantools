@@ -13,33 +13,33 @@ jumps = {
  		}
 
 registers = {
-			"a": int("40", 16),
- 			"b": int("08", 16), 
+			"a": int("02", 16),
+ 			"b": int("04", 16), 
  			"c": int("01", 16),
- 			"d": int("10", 16), 
- 			"s": int("02", 16), 
- 			"i": int("04", 16), 
- 			"f": int("00", 16),
+ 			"d": int("08", 16), 
+ 			"s": int("10", 16), 
+ 			"i": int("40", 16), 
+ 			"f": int("20", 16),
 		}
 
 syscalls = {
 			"read": int("01", 16),
- 			"open": int("02", 16), 
- 			"write": int("20", 16),
- 			"exit": int("08", 16), 
+ 			"open": int("10", 16), 
+ 			"write": int("04", 16),
+ 			"exit": int("20", 16), 
 		}
 
 
 
 opcodes = {
-			"MOV": int("40", 16),
- 			"ADD": int("02", 16), 
- 			"STK": int("80", 16),
+			"MOV": int("02", 16),
+ 			"ADD": int("10", 16), 
+ 			"STK": int("40", 16),
  			"STM": int("04", 16), 
- 			"LDM": int("01", 16), 
- 			"CMP": int("08", 16), 
- 			"SYS": int("20", 16),
- 			"JMP": int("10", 16),
+ 			"LDM": int("80", 16), 
+ 			"CMP": int("01", 16), 
+ 			"SYS": int("08", 16),
+ 			"JMP": int("20", 16),
 		}
 
 
@@ -106,11 +106,11 @@ for i in range(0, len(code), 3):
 
 
 
-print(res)
+# print(res)
 
 code=res
 
-kolejnosc = [2, 3, 1]
+kolejnosc = [2, 1, 3]
 code2 = [0 for i in range(len(code))]
 for i in range(0, len(code), 3):
 	code2[i+kolejnosc.index(1)] = code[i]
